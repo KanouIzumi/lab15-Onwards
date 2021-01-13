@@ -19,8 +19,18 @@ public class BGM_Controller : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            int rand = Random.Range(0, AudioClipBGMArr.Length);
-            audioSource.PlayOneShot(AudioClipBGMArr[rand]);
+            if (!audioSource.isPlaying())
+            {
+                int rand = Random.Range(0, AudioClipBGMArr.Length);
+                audioSource.PlayOneShot(AudioClipBGMArr[rand]);
+            }
+            else 
+            {
+                audioSource.Stop();
+                int rand = Random.Range(0, AudioClipBGMArr.Length);
+                audioSource.PlayOneShot(AudioClipBGMArr[rand]);
+            }
         }
     }
+
 }
